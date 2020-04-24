@@ -32,6 +32,9 @@ public class AllergyHistoryForm extends JFrame {
         initComponents();
     }
     
+    // CREATE ANOTHER CONSTRUCTOR FOR PID
+    
+    
     // To start, it sets the look and feel for the frame so it's the same as the current operating system.
     private void initComponents(){
         try{
@@ -64,6 +67,8 @@ public class AllergyHistoryForm extends JFrame {
         JButton saveButton = new JButton("Save");
         JButton deleteButton = new JButton("Delete");
         JButton closeButton = new JButton("Close");
+        JButton generalMedicalHistoryButton = new JButton("General Medical History");
+        JButton patientDemographicsButton = new JButton("Patient Demographics");
         
         // To add these action listeners, this code uses lambda expressions.
         editButton.addActionListener(e -> editButtonClicked());
@@ -71,6 +76,8 @@ public class AllergyHistoryForm extends JFrame {
         saveButton.addActionListener(e -> saveButtonClicked());
         deleteButton.addActionListener(e -> deleteButtonClicked());
         closeButton.addActionListener(e -> closeButtonClicked());
+        generalMedicalHistoryButton.addActionListener(e -> generalMedicalHistoryButtonClicked());
+        patientDemographicsButton.addActionListener(e -> patientDemographicsButtonClicked());
         
         // Button panel.
         // After creating the buttons, it creates a panel to contain these buttons.
@@ -82,6 +89,8 @@ public class AllergyHistoryForm extends JFrame {
         buttonPanel.add(saveButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(closeButton);
+        buttonPanel.add(generalMedicalHistoryButton);
+        buttonPanel.add(patientDemographicsButton);
         
         // Main panel.
         // After creating the panel for the buttons, this code creates another JPanel to store the labels and text boxes for this GUI.
@@ -174,6 +183,15 @@ public class AllergyHistoryForm extends JFrame {
     // In other words, it's executed when the Close button is clicked.
     private void closeButtonClicked(){
         System.exit(0);
+    }
+    
+    private void generalMedicalHistoryButtonClicked(){
+        // MAKE ALTERATIONS TO CODE FROM LINE 199
+        JFrame genMedHX = new InterviewForGeneralMedicalHistory();
+    }
+    
+    private void patientDemographicsButtonClicked(){
+        // MAKE ALTERATIONS TO CODE FROM LINE 199
     }
     
     // The main() method contains the code that creates a thread that creates the AllergyHistoryForm object and adds it the event queue that's used by the event dispatcher thread (EDT).
