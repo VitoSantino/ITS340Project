@@ -8,6 +8,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +20,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 // After the import statements, the declaration for the class shows that the InterviewForGeneralMedicalHistory inherits the JFrame class.
-public class InterviewForGeneralMedicalHistory extends JFrame{
+public class InterviewForGeneralMedicalHistory extends JFrame implements ActionListener{
     // The body of the InterviewForGeneralMedicalHistory class begins by declaring six text fields.
     // It's necessary to declare these text fields here so all methods of the class, including the event handlers, can access them.
     private JTextField bloodTypeField;
@@ -56,11 +58,17 @@ public class InterviewForGeneralMedicalHistory extends JFrame{
         // Then, it sets the preferred size and minimum size for these text fields.
         Dimension dim = new Dimension(150, 20);
         bloodTypeField.setPreferredSize(dim);
+        bloodTypeField.setMinimumSize(dim);
         rHFactorField.setPreferredSize(dim);
+        rHFactorField.setMinimumSize(dim);
         maritalStatusField.setPreferredSize(dim);
+        maritalStatusField.setMinimumSize(dim);
         alcoholUseField.setPreferredSize(dim);
+        alcoholUseField.setMinimumSize(dim);
         tobaccoUseField.setPreferredSize(dim);
+        tobaccoUseField.setMinimumSize(dim);
         drugUsageField.setPreferredSize(dim);
+        drugUsageField.setMinimumSize(dim);
         
         // After setting up the text fields, this code creates the Edit, New, Save, Delete, and Close.
         JButton editButton = new JButton("Edit");
@@ -68,6 +76,8 @@ public class InterviewForGeneralMedicalHistory extends JFrame{
         JButton saveButton = new JButton("Save");
         JButton deleteButton = new JButton("Delete");
         JButton closeButton = new JButton("Close");
+        JButton patientDemographicsButton = new JButton("Patient Demographics");
+        JButton allergyHistoryButton = new JButton("Allergy History");
         
         // To add thses action listeners, this code uses lambda expressions.
         // First, it uses a lambda expression to specify that the editButtonClicked() method shown later in the program is the action listener for the Edit button.
@@ -78,6 +88,8 @@ public class InterviewForGeneralMedicalHistory extends JFrame{
         saveButton.addActionListener(e -> saveButtonClicked());
         deleteButton.addActionListener(e -> deleteButtonClicked());
         closeButton.addActionListener(e -> closeButtonClicked());
+        patientDemographicsButton.addActionListener(e -> patientDemographicsButtonClicked());
+        allergyHistoryButton.addActionListener(e -> allergyHistoryButtonClicked());
         
         // button panel
         // After creating the two buttons, it creates a panel to contain these buttons.
@@ -89,6 +101,8 @@ public class InterviewForGeneralMedicalHistory extends JFrame{
         buttonPanel.add(saveButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(closeButton);
+        buttonPanel.add(patientDemographicsButton);
+        buttonPanel.add(allergyHistoryButton);
         
         // main panel
         // After creating the panel for the buttons, this code creates another JPanel to store the labels and text boxes for this GUI.
@@ -188,11 +202,26 @@ public class InterviewForGeneralMedicalHistory extends JFrame{
         System.exit(0);
     }
     
+    private void patientDemographicsButtonClicked(){
+        PatientDemographics patDem = new PatientDemographics();
+        patDem.setVisible(true);
+    }
+    
+    private void allergyHistoryButtonClicked(){
+        AllergyHistoryForm allergies = new AllergyHistoryForm();
+        allergies.setVisible(true);
+    }
+    
     // The main() method contains the code that creates a thread that creates the InterviewForGeneralMedicalHistory object and adds it to the event queue that's used by the event dispatcher thread (EDT).
     public static void main(String[] args){
         // Here, the code uses a lambda expression to do that.
         java.awt.EventQueue.invokeLater(() -> {
             JFrame frame = new InterviewForGeneralMedicalHistory();
         });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
