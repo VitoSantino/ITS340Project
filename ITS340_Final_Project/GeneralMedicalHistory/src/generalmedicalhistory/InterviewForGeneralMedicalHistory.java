@@ -11,6 +11,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,8 +20,11 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+
 // After the import statements, the declaration for the class shows that the InterviewForGeneralMedicalHistory inherits the JFrame class.
 public class InterviewForGeneralMedicalHistory extends JFrame implements ActionListener{
+    private javax.swing.JButton allergyHistoryButton;
+    private javax.swing.JButton patientDemographicsButton;
     // The body of the InterviewForGeneralMedicalHistory class begins by declaring six text fields.
     // It's necessary to declare these text fields here so all methods of the class, including the event handlers, can access them.
     private JTextField bloodTypeField;
@@ -76,8 +80,10 @@ public class InterviewForGeneralMedicalHistory extends JFrame implements ActionL
         JButton saveButton = new JButton("Save");
         JButton deleteButton = new JButton("Delete");
         JButton closeButton = new JButton("Close");
-        JButton patientDemographicsButton = new JButton("Patient Demographics");
-        JButton allergyHistoryButton = new JButton("Allergy History");
+        //JButton patientDemographicsButton = new JButton("Patient Demographics");
+        patientDemographicsButton = new javax.swing.JButton();
+        // JButton allergyHistoryButton = new JButton("Allergy History");
+        allergyHistoryButton = new javax.swing.JButton();
         
         // To add thses action listeners, this code uses lambda expressions.
         // First, it uses a lambda expression to specify that the editButtonClicked() method shown later in the program is the action listener for the Edit button.
@@ -87,9 +93,7 @@ public class InterviewForGeneralMedicalHistory extends JFrame implements ActionL
         // All of the other buttons follow the same general syntax as the Edit and New buttons.
         saveButton.addActionListener(e -> saveButtonClicked());
         deleteButton.addActionListener(e -> deleteButtonClicked());
-        closeButton.addActionListener(e -> closeButtonClicked());
-        patientDemographicsButton.addActionListener(e -> patientDemographicsButtonClicked());
-        allergyHistoryButton.addActionListener(e -> allergyHistoryButtonClicked());
+        closeButton.addActionListener(e -> closeButtonClicked());;
         
         // button panel
         // After creating the two buttons, it creates a panel to contain these buttons.
@@ -102,7 +106,15 @@ public class InterviewForGeneralMedicalHistory extends JFrame implements ActionL
         buttonPanel.add(deleteButton);
         buttonPanel.add(closeButton);
         buttonPanel.add(patientDemographicsButton);
+        patientDemographicsButton.setText("Patient Demographics");
+        patientDemographicsButton.addActionListener(this::patientDemographicsButtonActionPerformed);
         buttonPanel.add(allergyHistoryButton);
+        allergyHistoryButton.setText("Allergy History");
+        allergyHistoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+                allergyHistoryButtonActionPerformed(evt);
+            }
+        });
         
         // main panel
         // After creating the panel for the buttons, this code creates another JPanel to store the labels and text boxes for this GUI.
@@ -202,14 +214,14 @@ public class InterviewForGeneralMedicalHistory extends JFrame implements ActionL
         System.exit(0);
     }
     
-    private void patientDemographicsButtonClicked(){
-        PatientDemographics patDem = new PatientDemographics();
-        patDem.setVisible(true);
+    private void patientDemographicsButtonActionPerformed(java.awt.event.ActionEvent evt){
+        this.setVisible(false);
+        new PatientDemographicsForm().setVisible(true);
     }
     
-    private void allergyHistoryButtonClicked(){
-        AllergyHistoryForm allergies = new AllergyHistoryForm();
-        allergies.setVisible(true);
+    private void allergyHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
+        this.setVisible(false);
+        new AllergyHistoryForm().setVisible(true);
     }
     
     // The main() method contains the code that creates a thread that creates the InterviewForGeneralMedicalHistory object and adds it to the event queue that's used by the event dispatcher thread (EDT).

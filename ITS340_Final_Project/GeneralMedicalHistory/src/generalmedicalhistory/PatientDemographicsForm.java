@@ -1,14 +1,25 @@
-// The package statement stores the class in the package.
-package patientdemographics;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package generalmedicalhistory;
+
+/**
+ *
+ * @author vitos
+ */// The package statement stores the class in the package.
 
 // Import all of the AWT and Swing classes needed by the application.
+
+// After the import statements, the declaration for the class shows that PatientDemographicsClass inherits the JFrame class.
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,7 +28,6 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-// After the import statements, the declaration for the class shows that PatientDemographicsClass inherits the JFrame class.
 public class PatientDemographicsForm extends JFrame {
     // The body of PatientDemographicsClass begins by declaring text fields.
     // It's necessary to declare these text fields here so all methods of the class, including the event handlers, can access them.
@@ -400,11 +410,13 @@ public class PatientDemographicsForm extends JFrame {
     }
     
     private void generalMedicalHistoryButtonClicked(){
+        this.setVisible(false);
         InterviewForGeneralMedicalHistory genMedHX = new InterviewForGeneralMedicalHistory();
         genMedHX.setVisible(true);
     }
     
     private void allergyHistoryButtonClicked(){
+        this.setVisible(false);
         AllergyHistoryForm allergies = new AllergyHistoryForm();
         allergies.setVisible(true);
     }
@@ -417,3 +429,4 @@ public class PatientDemographicsForm extends JFrame {
         });
     }
 }
+

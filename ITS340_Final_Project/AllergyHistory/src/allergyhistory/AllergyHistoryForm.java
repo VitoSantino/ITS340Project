@@ -37,6 +37,8 @@ public class AllergyHistoryForm extends JFrame {
     
     // To start, it sets the look and feel for the frame so it's the same as the current operating system.
     private void initComponents(){
+        generalMedicalHistoryButton = new javax.swing.JButton();
+        
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
